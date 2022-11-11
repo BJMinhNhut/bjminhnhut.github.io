@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Competitive Programming on BJMinhNhut Blog</title>
+        <link>https://bjminhnhut.github.io/en/categories/cp/</link>
+        <description>Recent content in Competitive Programming on BJMinhNhut Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language><atom:link href="https://bjminhnhut.github.io/en/categories/cp/index.xml" rel="self" type="application/rss+xml" />
+    </channel>
+</rss>

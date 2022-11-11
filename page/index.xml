@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on BJMinhNhut Blog</title>
+        <link>https://bjminhnhut.github.io/page/</link>
+        <description>Recent content in Pages on BJMinhNhut Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <lastBuildDate>Sat, 20 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://bjminhnhut.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Giới thiệu</title>
+        <link>https://bjminhnhut.github.io/about/</link>
+        <pubDate>Sat, 20 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/about/</guid>
+        <description>&lt;img src="https://bjminhnhut.github.io/about/cover.jpg" alt="Featured image of post Giới thiệu" /&gt;&lt;blockquote&gt;
+&lt;p&gt;Một ngôi sao chổi trên đường đi tìm vận mệnh của nó&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;mình-là-ai&#34;&gt;Mình là ai?&lt;/h2&gt;
+&lt;p&gt;Mình là Đặng Minh Nhựt, đến từ Việt Nam. Mình là một cựu học sinh trường THPT chuyên Long An, đồng thời là một cựu học sinh đội tuyển HSG Tin học của tỉnh. Hiện tại, mình sắp trở thành một tân sinh viên ngành Khoa học máy tính (APCS) tại trường Đại học Khoa học Tự nhiên, ĐHQG-HCM. Mình có niềm đam mê với lập trình. Ngoài ra mình còn thích nghe nhạc, chụp ảnh và đọc manga.&lt;/p&gt;
+&lt;h2 id=&#34;mình-viết-gì&#34;&gt;Mình viết gì?&lt;/h2&gt;
+&lt;p&gt;Trang web này là nơi mình chia sẻ về chặng hành trình của mình đến với thế giới này. Mình hi vọng nó có thể giúp mình kết nối với nhiều người hơn và cải thiện sự tự tin của mình.&lt;/p&gt;
+&lt;p&gt;Có ba chủ đề chính mà mình muốn viết: lập trình, cuộc sống và du lịch. Đôi lúc có thể sẽ có ngoại lệ, nhưng mình sẽ tập trung vào ba chủ đề đó nhiều nhất.&lt;/p&gt;
+&lt;h2 id=&#34;thông-tin-liên-hệ&#34;&gt;Thông tin liên hệ&lt;/h2&gt;
+&lt;p&gt;Mọi người có thể liên hệ với mình qua:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Facebook: &lt;a class=&#34;link&#34; href=&#34;https://www.facebook.com/BJMinhNhut/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;facebook.com/BJMinhNhut&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Email: &lt;a class=&#34;link&#34; href=&#34;mailto:bjminhnhut@gmail.com&#34; &gt;bjminhnhut@gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Kho lưu trữ</title>
+        <link>https://bjminhnhut.github.io/archives/</link>
+        <pubDate>Sat, 20 Aug 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Liên kết</title>
+        <link>https://bjminhnhut.github.io/links/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/links/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>https://bjminhnhut.github.io/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

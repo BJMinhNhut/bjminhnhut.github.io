@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on BJMinhNhut Blog</title>
+        <link>https://bjminhnhut.github.io/categories/</link>
+        <description>Recent content in Categories on BJMinhNhut Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <lastBuildDate>Thu, 10 Nov 2022 22:30:50 +0700</lastBuildDate><atom:link href="https://bjminhnhut.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Lập trình thi đấu</title>
+        <link>https://bjminhnhut.github.io/categories/cp/</link>
+        <pubDate>Thu, 10 Nov 2022 22:30:50 +0700</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/categories/cp/</guid>
+        <description>&lt;img src="https://bjminhnhut.github.io/categories/cp/cp.jpg" alt="Featured image of post Lập trình thi đấu" /&gt;</description>
+        </item>
+        <item>
+        <title>Cuộc sống muôn màu</title>
+        <link>https://bjminhnhut.github.io/categories/mylife/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/categories/mylife/</guid>
+        <description>&lt;img src="https://bjminhnhut.github.io/categories/mylife/mylife.jpg" alt="Featured image of post Cuộc sống muôn màu" /&gt;</description>
+        </item>
+        <item>
+        <title>Những chuyến đi</title>
+        <link>https://bjminhnhut.github.io/categories/journeys/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/categories/journeys/</guid>
+        <description>&lt;img src="https://bjminhnhut.github.io/categories/journeys/road.jpg" alt="Featured image of post Những chuyến đi" /&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
