@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Sử dụng cho các bài toán cần chặt nhị phân nhiều lần'>
+<title>Chặt nhị phân song song</title>
+
+<link rel='canonical' href='https://bjminhnhut.github.io/p/parallel-binary-search/'>
+
+<link rel="stylesheet" href="/scss/style.min.d2139e6927eb11ff788eaee820b711ffc34adb800067c7218eea392cc1e23cc4.css"><meta property='og:title' content='Chặt nhị phân song song'>
+<meta property='og:description' content='Sử dụng cho các bài toán cần chặt nhị phân nhiều lần'>
+<meta property='og:url' content='https://bjminhnhut.github.io/p/parallel-binary-search/'>
+<meta property='og:site_name' content='BJMinhNhut Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cp' /><meta property='article:tag' content='algorithm' /><meta property='article:tag' content='offline-techniques' /><meta property='article:published_time' content='2022-11-10T22:30:50&#43;07:00'/><meta property='article:modified_time' content='2022-11-10T22:30:50&#43;07:00'/><meta property='og:image' content='https://bjminhnhut.github.io/img/og_image.png' />
+<meta name="twitter:site" content="@BJMinhNhut">
+    <meta name="twitter:creator" content="@BJMinhNhut"><meta name="twitter:title" content="Chặt nhị phân song song">
+<meta name="twitter:description" content="Sử dụng cho các bài toán cần chặt nhị phân nhiều lần"><meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content='https://bjminhnhut.github.io/img/og_image.png' />
+    <link rel="shortcut icon" href="img/avatar.png" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9GPY0SMCXL"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-9GPY0SMCXL', { 'anonymize_ip': false });
+}
+</script>
+<style>
+:root {
+	--base-font-family: "IBM Plex Sans", var(--sys-font-family), sans-serif;
+	--code-font-family: "IBM Plex Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+</style>
+
+<script>
+	(function () {
+		const customFont = document.createElement('link');
+		customFont.href = "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap";
+	
+		customFont.type = "text/css";
+		customFont.rel = "stylesheet";
+	
+		document.head.appendChild(customFont);
+	}());
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Bật/tắt Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu7b26d41ccf8b25409b6047bf2c0a76e4_45751_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">BJMinhNhut Blog</a></h1>
+            <h2 class="site-description">A comet searching for its destiny</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://www.facebook.com/BJMinhNhut'
+                        target="_blank"
+                        title="Facebook"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /> </svg>  
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/BJMinhNhut'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/bjminhnhut/'
+                        target="_blank"
+                        title="LinkedIn"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="2" />
+  <line x1="8" y1="11" x2="8" y2="16" />
+  <line x1="8" y1="8" x2="8" y2="8.01" />
+  <line x1="12" y1="16" x2="12" y2="11" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.youtube.com/channel/UCwmJooCdb16e-N6G76tqRiQ'
+                        target="_blank"
+                        title="YouTube"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0" standalone="no"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-youtube" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"/> <rect x="3" y="5" width="18" height="14" rx="4" /> <path d="M10 9l5 3l-5 3z" /> </svg>  
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Trang chủ</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>Giới thiệu</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Kho lưu trữ</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Liên kết</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://bjminhnhut.github.io/" selected>Tiếng Việt</option>
+                        
+                            <option value="https://bjminhnhut.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Chế độ tối</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Mục lục</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#nguồn-tham-khảo">Nguồn tham khảo</a></li>
+    <li><a href="#cần-biết-trước">Cần biết trước</a></li>
+    <li><a href="#mở-đầu">Mở đầu</a></li>
+    <li><a href="#bài-toán">Bài toán</a>
+      <ol>
+        <li><a href="#đề-bài">Đề bài</a>
+          <ol>
+            <li><a href="#giới-hạn">Giới hạn</a></li>
+          </ol>
+        </li>
+        <li><a href="#phân-tích">Phân tích</a></li>
+        <li><a href="#lời-giải">Lời giải</a></li>
+        <li><a href="#cài-đặt">Cài đặt</a></li>
+      </ol>
+    </li>
+    <li><a href="#tổng-kết">Tổng kết</a></li>
+    <li><a href="#một-số-bài-tập-khác">Một số bài tập khác</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cp/" >
+                Lập trình thi đấu
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/parallel-binary-search/">Chặt nhị phân song song</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Sử dụng cho các bài toán cần chặt nhị phân nhiều lần
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 10, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    Đọc trong 9 phút
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="nguồn-tham-khảo">Nguồn tham khảo</h2>
+<ul>
+<li>Codeforces - <a class="link" href="https://codeforces.com/blog/entry/45578"  target="_blank" rel="noopener"
+    >Parallel Binary Search [tutorial]</a></li>
+<li>Robert1003 - <a class="link" href="https://robert1003.github.io/2020/02/05/parallel-binary-search.html#example-problems"  target="_blank" rel="noopener"
+    >A Simple Introduction to Parallel Binary Search</a></li>
+</ul>
+<h2 id="cần-biết-trước">Cần biết trước</h2>
+<p>Tìm kiếm nhị phân (tất nhiên vì bạn cần phải hiểu cách tìm kiếm nhị phân hoạt động).</p>
+<h2 id="mở-đầu">Mở đầu</h2>
+<p>Trong một số bài toán. Ta cần sử dụng kĩ thuật tìm kiếm nhị phân cho rất nhiều truy vấn. Trong đó có một số thao tác trong lúc chặt nhị phân được lặp lại nhiều lần. Để tối ưu hóa việc này, ta thực hiện chặt nhị phân song song - tức chặt nhị phân cùng một lúc nhiều truy vấn.</p>
+<h2 id="bài-toán">Bài toán</h2>
+<p>Ta xét bài toán sau đây: <a class="link" href="https://www.spoj.com/problems/METEORS/"  target="_blank" rel="noopener"
+    >Meteors</a>.</p>
+<h3 id="đề-bài">Đề bài</h3>
+<p>Bài toán có thể được phát biểu đơn giản như sau:</p>
+<p>Cho $N$ người và $M$ cái túi. Túi thứ $i$ được sở hữu bởi người thứ $o_i$, và mỗi người cần ít nhất $g_i$ quả táo trong các túi mà mình sở hữu. Các cái túi được xếp theo thứ tự thành vòng tròn.</p>
+<p>Sau đó, có $K$ sự kiện lần lượt xảy ra, mỗi sự kiện có dạng $l_i, r_i, x_i$: các túi được đánh số từ $l_i$ đến $r_i$ được tăng thêm $x_i$ quả táo ($l_i$ có thể lớn hơn $r_i$ do các túi được xếp thành vòng tròn).</p>
+<p>Với mỗi người, cho biết sau ít nhất bao nhiêu sự kiện thì người đó đạt đủ số lượng quả táo mà mình muốn.</p>
+<h4 id="giới-hạn">Giới hạn</h4>
+<ul>
+<li>$1 \leq N, M, K \leq 3 \cdot 10^5$</li>
+<li>$1 \leq o_i, l_i, r_i \leq N$</li>
+<li>$1 \leq g_i, x_i \leq 10^9$</li>
+</ul>
+<h3 id="phân-tích">Phân tích</h3>
+<p>Cách tiếp cận dễ nhận ra đó là với mỗi người, ta tiến hành tìm kiếm nhị phân số lượng sự kiện, sau đó cập nhật từng sự kiện lên cây phân đoạn hoặc cây Fenwick. Tuy nhiên, tổng độ phức tạp thời gian cho cách này sẽ lên tới $\mathcal{O}(N \cdot \log K \cdot K \cdot \log M)$ và tất nhiên sẽ bị TLE.</p>
+<p>Từ đây ta nhận ra việc tìm kiếm nhị phân lần lượt cho $N$ là không khả thi. Vậy nên ta sẽ tìm cách áp dụng kĩ thuật chặt nhị phân song song.</p>
+<h3 id="lời-giải">Lời giải</h3>
+<p>Từ phân tích trên, ta nhận thấy việc cập nhật các sự kiện từ đầu đến một vị trí nào đó trong các lần chặt nhị phân đã bị lặp lại nhiều lần. Ví dụ như, trong lượt chặt nhị phân đầu tiên của mỗi người, ta đều cần cập nhật lại các sự kiện từ $1$ đến $\frac{K+1}{2}$.</p>
+<p>Từ đây ta sẽ tiếp cận việc tìm kiếm nhị phân theo một hướng khác: thay vì chặt nhị phân $N$ lần cho từng người, thì ta chỉ chặt nhị phân $1$ lần sao cho trong mỗi lượt, ta tiến hành &ldquo;chia nhóm&rdquo; $N$ người theo kết quả.</p>
+<p>Cụ thể, trong lượt đầu tiên, mọi người đều chung một nhóm $[1, K]$. Sang lượt thứ hai, sẽ có một số người nằm ở nhóm $[1, \frac{K}{2}]$ và số còn lại ở nhóm $(\frac{K}{2}, K]$ tùy theo điều kiện thỏa mãn hay không. Đến lượt thứ ba, ta có $4$ nhóm: $[1, \frac{K}{4}]$, $(\frac{K}{4}, \frac{2K}{4}]$, $(\frac{2K}{4}, \frac{3K}{4}]$, và $(\frac{3K}{4}, K]$. Như vậy, sau khoảng $\mathcal{O}(\log K)$ lượt, mọi người đều được chia vào một <strong>điểm</strong>, điểm này sẽ chính là đáp án cho người đó. Đồng thời, ở mỗi lượt, ta chỉ cần thực hiện cập nhật lần lượt $K$ sự kiện là có thể tính được cho $N$ người và chia nhóm cho $N$ người đó.</p>
+<p>Độ phức tạp: Do mỗi thao tác cập nhật $K$ sự kiện mất $\mathcal{O}(\log M)$, nên độ phức tạp của thuật toán này là $\mathcal{O}(\log Q \cdot Q \cdot \log M)$, vừa đủ với giới hạn đề bài.</p>
+<h3 id="cài-đặt">Cài đặt</h3>
+<p>Ta cần chuẩn bị:</p>
+<ul>
+<li>Một cấu trúc dữ liệu cho phép cập nhật đoạn và truy vấn một phần tử (có thể dùng cây Fenwick hoặc cây phân đoạn)</li>
+<li>Một mảng <code>check_list</code> với <code>check_list[x]</code> lưu danh sách những người đang chặt nhị phân tại vị trí $\text{mid} = x$</li>
+<li>Các mảng $L[i], R[i], \text{best}[i]$ dùng để lưu trạng thái chặt nhị phân của người thứ $i$.</li>
+</ul>
+<p>Mỗi lượt trong $\log K$ lượt chặt nhị phân, ta thực hiện như sau:</p>
+<ul>
+<li>Khởi tạo lại cây Fenwick/phân đoạn.</li>
+<li>Khởi tạo lại mảng <code>check_list</code></li>
+<li>Xác định vị trí chặt nhị phân $\text{mid}[i] = \frac{L[i]+ R[i]}{2}$ cho từng người và thêm vào <code>check_list[mid[i]]</code></li>
+<li>Duyệt lần lượt các sự kiện và cập nhật lên cây Fenwick/phân đoạn. Khi duyệt đến vị trí $x$ thì duyệt từng người trong <code>check_list[x]</code>, tính tổng và cập nhật $L[i], R[i], \text{best}[i]$ cho người đó. Như vậy trong mỗi lượt ta cập nhật cho cây Fenwick đúng $K$ lần, và gọi truy vấn phần tử trên cây cho đúng $M$ cái túi.</li>
+</ul>
+<details>
+<summary> Code AC của mình </summary>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// Created by BJMinhNhut
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#define mp make_pair
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define pb push_back
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define fi first
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define se second
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define FOR(i, a, b) for(int i = (a), _b = (b); i &lt;= _b; ++i) 
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define FORD(i, a, b) for(int i = (a), _b = (b); i &gt;= _b; --i)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define ALL(a) (a).begin(), (a).end()
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define RALL(a) (a).rbegin(), (a).rend()
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define MASK(i) (1ll&lt;&lt;(i))
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define BIT(t, i) (((t)&gt;&gt;(i))&amp;1)
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vi</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">vll</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span> <span class="n">ll</span><span class="o">&gt;</span> <span class="n">pll</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">ii</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/***Common Functions***/</span>
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">minimize</span><span class="p">(</span><span class="n">T</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">maximize</span><span class="p">(</span><span class="n">T</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="n">T</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/***End of Template***/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mf">3e5</span><span class="o">+</span><span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">owner</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>	
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">goal</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Query</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">queries</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">BinarySearch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">best</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">BinarySearch</span><span class="p">(</span><span class="kt">int</span> <span class="n">_l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">_r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="n">l</span><span class="p">(</span><span class="n">_l</span><span class="p">),</span> <span class="n">r</span><span class="p">(</span><span class="n">_r</span><span class="p">),</span> <span class="n">best</span><span class="p">(</span><span class="n">_r</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="nf">getMid</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">bool</span> <span class="nf">finished</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">;}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">bool</span> <span class="n">go_left</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">go_left</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">best</span> <span class="o">=</span> <span class="n">getMid</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">			<span class="n">r</span> <span class="o">=</span> <span class="n">getMid</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span> <span class="k">else</span> <span class="n">l</span> <span class="o">=</span> <span class="n">getMid</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">state</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Fenwick</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">ll</span> <span class="n">nodes</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">memset</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">nodes</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span><span class="p">(;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">k</span> <span class="o">+=</span> <span class="n">k</span><span class="o">&amp;-</span><span class="n">k</span><span class="p">)</span> <span class="n">nodes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">rangeUpdate</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">update</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">update</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">ll</span> <span class="nf">getSum</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">ll</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span><span class="p">(;</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">-=</span> <span class="n">k</span><span class="o">&amp;-</span><span class="n">k</span><span class="p">)</span> <span class="n">ans</span> <span class="o">+=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">FT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">vi</span> <span class="n">check_list</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="n">vi</span> <span class="n">sectors</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Input</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">m</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">owner</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sectors</span><span class="p">[</span><span class="n">owner</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">pb</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">goal</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">l</span> <span class="o">&gt;&gt;</span> <span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">val</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="n">FT</span><span class="p">.</span><span class="n">rangeUpdate</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">FT</span><span class="p">.</span><span class="n">rangeUpdate</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">FT</span><span class="p">.</span><span class="n">rangeUpdate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Solve</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//init
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">BinarySearch</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span> <span class="c1">// binary search in the range [1, k] 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="kt">bool</span> <span class="n">changed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="p">(</span><span class="n">changed</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">changed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="c1">// check whether any state[i] changed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">		<span class="c1">//init
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">FT</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">		<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">finished</span><span class="p">())</span> 
+</span></span><span class="line"><span class="cl">			<span class="n">check_list</span><span class="p">[</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getMid</span><span class="p">()].</span><span class="n">pb</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="n">FOR</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//sweep through k queries
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">update</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">l</span><span class="p">,</span> <span class="n">queries</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">r</span><span class="p">,</span> <span class="n">queries</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">			<span class="k">while</span> <span class="p">(</span><span class="n">check_list</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">size</span><span class="p">())</span> <span class="p">{</span> <span class="c1">//check every person who currently has mid = i in binary search
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">changed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">check_list</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">back</span><span class="p">();</span> <span class="n">check_list</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">pop_back</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">				<span class="n">ll</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">sectors</span><span class="p">[</span><span class="n">cur</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="n">sum</span> <span class="o">+=</span> <span class="n">FT</span><span class="p">.</span><span class="n">getSum</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">					<span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">goal</span><span class="p">[</span><span class="n">cur</span><span class="p">])</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">				<span class="n">state</span><span class="p">[</span><span class="n">cur</span><span class="p">].</span><span class="n">update</span><span class="p">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">goal</span><span class="p">[</span><span class="n">cur</span><span class="p">]);</span> <span class="c1">// go left when meet the goal
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">best</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">best</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span> <span class="c1">//print binary search result
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">else</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;NIE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">fopen</span><span class="p">(</span><span class="s">&#34;inputf.in&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">freopen</span><span class="p">(</span><span class="s">&#34;inputf.in&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">freopen</span><span class="p">(</span><span class="s">&#34;outputf.in&#34;</span><span class="p">,</span> <span class="s">&#34;w&#34;</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Input</span><span class="p">(),</span> <span class="n">Solve</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></details>
+<h2 id="tổng-kết">Tổng kết</h2>
+<blockquote>
+<p>&ldquo;A cool way to visualize this is to think of a binary search tree. Suppose we are doing standard binary search, and we reject the right interval — this can be thought of as moving left in the tree. Similarly, if we reject the left interval, we are moving right in the tree.</p>
+<p>So what Parallel Binary Search does is move one step down in N binary search trees simultaneously in one &ldquo;sweep&rdquo;, taking $\mathcal{O}(NX)$ time, where X is dependent on the problem and the data structures used in it. Since the height of each tree is $\log N$, the complexity is $\mathcal{O}(NX\log{N})$.&rdquo; — animeshf</p>
+</blockquote>
+<p>Mình xin phép dịch lại như sau: Một cách đơn giản, chặt nhị phân song song tức là ta vẽ ra một <em>cây tìm kiếm nhị phân</em>. Cứ mỗi lượt ta duyệt một tầng, và đẩy các phần tử trong mỗi nút thuộc tầng này sang hai nút trái hoặc phải ở tầng dưới. Việc này được thực hiện chỉ trong $\mathcal{O}(NX)$ với $X$ tùy thuộc vào từng bài toán và cấu trúc dữ liệu mà ta sử dụng. Từ đó dẫn đến tổng độ phức tạp thuật toán là $\mathcal{O}(NX\log{N})$.</p>
+<p>Ngoài ra, cách xử lí truy vấn ở bài toán chỉ là một trường hợp cụ thể, trong các trường hợp khác, về tổng quát, ta cần tư duy rằng ở mỗi tầng, ta có danh sách các truy vấn mới được tạo ra từ việc tìm $\text{mid}[i]$ và ta cần đi giải quyết nhanh các truy vấn này.</p>
+<h2 id="một-số-bài-tập-khác">Một số bài tập khác</h2>
+<ul>
+<li>ICPC 2022 miền Trung - <a class="link" href="https://oj.vnoi.info/problem/icpc22_mt_d"  target="_blank" rel="noopener"
+    >D: Median</a></li>
+<li>SPOJ - <a class="link" href="https://www.spoj.com/problems/METEORS/"  target="_blank" rel="noopener"
+    >Meteors</a></li>
+<li>HackerEarth - <a class="link" href="https://www.hackerearth.com/challenges/competitive/may-circuits/algorithm/make-n00b_land-great-again-circuits/"  target="_blank" rel="noopener"
+    >Make n00b_land Great Again!</a></li>
+<li>Topcoder - <a class="link" href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=14088"  target="_blank" rel="noopener"
+    >SRM 675 Div1 500</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/cp/">cp</a>
+        
+            <a href="/tags/algorithm/">algorithm</a>
+        
+            <a href="/tags/offline-techniques/">offline-techniques</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="5166d8ba-499d-4dcc-83ab-6ae0837f08d7"
+    data-page-id="bc1fae99e187cc27c7732b6b01665ece"
+    data-page-url="https://bjminhnhut.github.io/p/parallel-binary-search/"
+    data-page-title="Chặt nhị phân song song"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 BJMinhNhut Blog
+    </section>
+    
+    <section class="powerby">
+        Xây dựng từ <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> thiết kế bởi <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
