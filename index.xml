@@ -376,7 +376,7 @@
 &lt;p&gt;So what Parallel Binary Search does is move one step down in N binary search trees simultaneously in one &amp;ldquo;sweep&amp;rdquo;, taking $\mathcal{O}(NX)$ time, where X is dependent on the problem and the data structures used in it. Since the height of each tree is $\log N$, the complexity is $\mathcal{O}(NX\log{N})$.&amp;rdquo; — animeshf&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Mình xin phép dịch lại như sau: Một cách đơn giản, chặt nhị phân song song tức là ta vẽ ra một &lt;em&gt;cây tìm kiếm nhị phân&lt;/em&gt;. Cứ mỗi lượt ta duyệt một tầng, và đẩy các phần tử trong mỗi nút thuộc tầng này sang hai nút trái hoặc phải ở tầng dưới. Việc này được thực hiện chỉ trong $\mathcal{O}(NX)$ với $X$ tùy thuộc vào từng bài toán và cấu trúc dữ liệu mà ta sử dụng. Từ đó dẫn đến tổng độ phức tạp thuật toán là $\mathcal{O}(NX\log{N})$.&lt;/p&gt;
-&lt;p&gt;Ngoài ra, cách xử lí truy vấn ở bài toán chỉ là một trường hợp cụ thể, trong các trường hợp khác, về tổng quát, ta cần tư duy rằng ở mỗi tầng, ta có danh sách các truy vấn mới được tạo ra từ việc tìm $\text{mid}[i]$ và ta cần đi giải quyết nhanh các truy vấn này.&lt;/p&gt;
+&lt;p&gt;Ngoài ra, cách xử lí truy vấn ở bài toán trên chỉ là một trường hợp cụ thể, trong các trường hợp khác, về tổng quát, ta cần tư duy rằng ở mỗi tầng, ta có danh sách các truy vấn mới được tạo ra từ việc tìm $\text{mid}[i]$ và ta cần đi giải quyết nhanh các truy vấn này.&lt;/p&gt;
 &lt;h2 id=&#34;một-số-bài-tập-khác&#34;&gt;Một số bài tập khác&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;ICPC 2022 miền Trung - &lt;a class=&#34;link&#34; href=&#34;https://oj.vnoi.info/problem/icpc22_mt_d&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

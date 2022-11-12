@@ -45,6 +45,11 @@ if (!doNotTrack) {
 		document.head.appendChild(customFont);
 	}());
 </script>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
     </head>
     <body class="
     article-page
@@ -796,7 +801,7 @@ if (!doNotTrack) {
 <p>So what Parallel Binary Search does is move one step down in N binary search trees simultaneously in one &ldquo;sweep&rdquo;, taking $\mathcal{O}(NX)$ time, where X is dependent on the problem and the data structures used in it. Since the height of each tree is $\log N$, the complexity is $\mathcal{O}(NX\log{N})$.&rdquo; — animeshf</p>
 </blockquote>
 <p>Mình xin phép dịch lại như sau: Một cách đơn giản, chặt nhị phân song song tức là ta vẽ ra một <em>cây tìm kiếm nhị phân</em>. Cứ mỗi lượt ta duyệt một tầng, và đẩy các phần tử trong mỗi nút thuộc tầng này sang hai nút trái hoặc phải ở tầng dưới. Việc này được thực hiện chỉ trong $\mathcal{O}(NX)$ với $X$ tùy thuộc vào từng bài toán và cấu trúc dữ liệu mà ta sử dụng. Từ đó dẫn đến tổng độ phức tạp thuật toán là $\mathcal{O}(NX\log{N})$.</p>
-<p>Ngoài ra, cách xử lí truy vấn ở bài toán chỉ là một trường hợp cụ thể, trong các trường hợp khác, về tổng quát, ta cần tư duy rằng ở mỗi tầng, ta có danh sách các truy vấn mới được tạo ra từ việc tìm $\text{mid}[i]$ và ta cần đi giải quyết nhanh các truy vấn này.</p>
+<p>Ngoài ra, cách xử lí truy vấn ở bài toán trên chỉ là một trường hợp cụ thể, trong các trường hợp khác, về tổng quát, ta cần tư duy rằng ở mỗi tầng, ta có danh sách các truy vấn mới được tạo ra từ việc tìm $\text{mid}[i]$ và ta cần đi giải quyết nhanh các truy vấn này.</p>
 <h2 id="một-số-bài-tập-khác">Một số bài tập khác</h2>
 <ul>
 <li>ICPC 2022 miền Trung - <a class="link" href="https://oj.vnoi.info/problem/icpc22_mt_d"  target="_blank" rel="noopener"
@@ -861,27 +866,55 @@ if (!doNotTrack) {
      
     
         
-    <div id="cusdis_thread"
-    data-host="https://cusdis.com"
-    data-app-id="5166d8ba-499d-4dcc-83ab-6ae0837f08d7"
-    data-page-id="bc1fae99e187cc27c7732b6b01665ece"
-    data-page-url="https://bjminhnhut.github.io/p/parallel-binary-search/"
-    data-page-title="Chặt nhị phân song song"></div>
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="BJMinhNhut/bjminhnhut.github.io"
+    data-repo-id="R_kgDOH2LKSA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOH2LKSM4CSghx"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="vi"
+    crossorigin="anonymous"
+    async
+></script>
 <script>
-    function setCusdisTheme(theme) {
-        let cusdis = document.querySelector('#cusdis_thread iframe');
-        if (cusdis) {
-            window.CUSDIS.setTheme(theme)
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
         }
     }
 
-    window.addEventListener('onColorSchemeChange', (e) => {
-        setCusdisTheme(e.detail)
-    })
-</script>
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
 
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark');
+            }
+        }
+    })();
+</script>
 
     
 
