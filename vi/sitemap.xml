@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://bjminhnhut.github.io/</loc>
-    <lastmod>2022-11-10T22:30:50+07:00</lastmod>
+    <lastmod>2023-01-16T00:16:17+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,11 +15,8 @@
                 href="https://bjminhnhut.github.io/"
                 />
   </url><url>
-    <loc>https://bjminhnhut.github.io/tags/algorithm/</loc>
-    <lastmod>2022-11-10T22:30:50+07:00</lastmod>
-  </url><url>
     <loc>https://bjminhnhut.github.io/categories/</loc>
-    <lastmod>2022-11-10T22:30:50+07:00</lastmod>
+    <lastmod>2023-01-16T00:16:17+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -30,6 +27,40 @@
                 hreflang="vi"
                 href="https://bjminhnhut.github.io/categories/"
                 />
+  </url><url>
+    <loc>https://bjminhnhut.github.io/tags/cla/</loc>
+    <lastmod>2023-01-16T00:16:17+07:00</lastmod>
+  </url><url>
+    <loc>https://bjminhnhut.github.io/categories/mylife/</loc>
+    <lastmod>2023-01-16T00:16:17+07:00</lastmod>
+  </url><url>
+    <loc>https://bjminhnhut.github.io/tags/high-school/</loc>
+    <lastmod>2023-01-16T00:16:17+07:00</lastmod>
+  </url><url>
+    <loc>https://bjminhnhut.github.io/tags/life/</loc>
+    <lastmod>2023-01-16T00:16:17+07:00</lastmod>
+  </url><url>
+    <loc>https://bjminhnhut.github.io/p/l%E1%BB%ADa-tr%E1%BA%A1i-chuy%C3%AAn-long-an/</loc>
+    <lastmod>2023-01-16T00:16:17+07:00</lastmod>
+  </url><url>
+    <loc>https://bjminhnhut.github.io/post/</loc>
+    <lastmod>2023-01-16T00:16:17+07:00</lastmod>
+  </url><url>
+    <loc>https://bjminhnhut.github.io/tags/</loc>
+    <lastmod>2023-01-16T00:16:17+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://bjminhnhut.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://bjminhnhut.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://bjminhnhut.github.io/tags/algorithm/</loc>
+    <lastmod>2022-11-10T22:30:50+07:00</lastmod>
   </url><url>
     <loc>https://bjminhnhut.github.io/p/parallel-binary-search/</loc>
     <lastmod>2022-11-10T22:30:50+07:00</lastmod>
@@ -52,22 +83,6 @@
   </url><url>
     <loc>https://bjminhnhut.github.io/tags/offline-techniques/</loc>
     <lastmod>2022-11-10T22:30:50+07:00</lastmod>
-  </url><url>
-    <loc>https://bjminhnhut.github.io/post/</loc>
-    <lastmod>2022-11-10T22:30:50+07:00</lastmod>
-  </url><url>
-    <loc>https://bjminhnhut.github.io/tags/</loc>
-    <lastmod>2022-11-10T22:30:50+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://bjminhnhut.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://bjminhnhut.github.io/tags/"
-                />
   </url><url>
     <loc>https://bjminhnhut.github.io/about/</loc>
     <lastmod>2022-08-20T00:00:00+00:00</lastmod>
@@ -107,8 +122,6 @@
                 hreflang="vi"
                 href="https://bjminhnhut.github.io/page/"
                 />
-  </url><url>
-    <loc>https://bjminhnhut.github.io/categories/mylife/</loc>
   </url><url>
     <loc>https://bjminhnhut.github.io/links/</loc>
     <xhtml:link
