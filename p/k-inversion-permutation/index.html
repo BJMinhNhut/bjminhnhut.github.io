@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Sử dụng cho các bài toán cần chặt nhị phân nhiều lần'>
-<title>Chặt nhị phân song song</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Một bài toán bao hàm loại trừ kết hợp Chia kẹo Euler'>
+<title>Hoán vị K-nghịch thế</title>
 
-<link rel='canonical' href='https://bjminhnhut.github.io/p/parallel-binary-search/'>
+<link rel='canonical' href='https://bjminhnhut.github.io/p/k-inversion-permutation/'>
 
-<link rel="stylesheet" href="/scss/style.min.414803a5d330ad88ba47e946c548f8f318a906f6b7ad063b57267506a51dbd74.css"><meta property='og:title' content='Chặt nhị phân song song'>
-<meta property='og:description' content='Sử dụng cho các bài toán cần chặt nhị phân nhiều lần'>
-<meta property='og:url' content='https://bjminhnhut.github.io/p/parallel-binary-search/'>
+<link rel="stylesheet" href="/scss/style.min.414803a5d330ad88ba47e946c548f8f318a906f6b7ad063b57267506a51dbd74.css"><meta property='og:title' content='Hoán vị K-nghịch thế'>
+<meta property='og:description' content='Một bài toán bao hàm loại trừ kết hợp Chia kẹo Euler'>
+<meta property='og:url' content='https://bjminhnhut.github.io/p/k-inversion-permutation/'>
 <meta property='og:site_name' content='BJMinhNhut Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cp' /><meta property='article:tag' content='algorithm' /><meta property='article:tag' content='offline-techniques' /><meta property='article:published_time' content='2022-11-10T22:30:50&#43;07:00'/><meta property='article:modified_time' content='2022-11-10T22:30:50&#43;07:00'/><meta property='og:image' content='https://bjminhnhut.github.io/img/og_image.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cp' /><meta property='article:tag' content='algorithm' /><meta property='article:tag' content='inclusion-exclusion' /><meta property='article:tag' content='combinatorics' /><meta property='article:published_time' content='2023-01-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-01-18T00:00:00&#43;00:00'/><meta property='og:image' content='https://bjminhnhut.github.io/img/og_image.png' />
 <meta name="twitter:site" content="@BJMinhNhut">
-    <meta name="twitter:creator" content="@BJMinhNhut"><meta name="twitter:title" content="Chặt nhị phân song song">
-<meta name="twitter:description" content="Sử dụng cho các bài toán cần chặt nhị phân nhiều lần"><meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@BJMinhNhut"><meta name="twitter:title" content="Hoán vị K-nghịch thế">
+<meta name="twitter:description" content="Một bài toán bao hàm loại trừ kết hợp Chia kẹo Euler"><meta name="twitter:card" content="summary">
     <meta name="twitter:image" content='https://bjminhnhut.github.io/img/og_image.png' />
     <link rel="shortcut icon" href="img/avatar.png" />
 
@@ -345,23 +345,25 @@ summary {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#nguồn-tham-khảo">Nguồn tham khảo</a></li>
     <li><a href="#cần-biết-trước">Cần biết trước</a></li>
-    <li><a href="#mở-đầu">Mở đầu</a></li>
-    <li><a href="#bài-toán">Bài toán</a>
+    <li><a href="#đề-bài">Đề bài</a>
       <ol>
-        <li><a href="#đề-bài">Đề bài</a>
-          <ol>
-            <li><a href="#giới-hạn">Giới hạn</a></li>
-          </ol>
-        </li>
-        <li><a href="#phân-tích">Phân tích</a></li>
-        <li><a href="#lời-giải">Lời giải</a></li>
-        <li><a href="#cài-đặt">Cài đặt</a></li>
+        <li><a href="#tham-khảo">Tham khảo</a></li>
+        <li><a href="#tóm-tắt">Tóm tắt</a></li>
       </ol>
     </li>
-    <li><a href="#tổng-kết">Tổng kết</a></li>
-    <li><a href="#một-số-bài-tập-khác">Một số bài tập khác</a></li>
+    <li><a href="#phân-tích">Phân tích</a>
+      <ol>
+        <li><a href="#subtask-1-quy-hoạch-động">Subtask 1: Quy hoạch động</a></li>
+        <li><a href="#subtask-2-bao-hàm-loại-trừ">Subtask 2: Bao hàm loại trừ</a>
+          <ol>
+            <li><a href="#nhận-xét">Nhận xét</a></li>
+            <li><a href="#lời-giải">Lời giải</a></li>
+            <li><a href="#code-tham-khảo">Code tham khảo</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -389,12 +391,12 @@ summary {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/parallel-binary-search/">Chặt nhị phân song song</a>
+            <a href="/p/k-inversion-permutation/">Hoán vị K-nghịch thế</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            Sử dụng cho các bài toán cần chặt nhị phân nhiều lần
+            Một bài toán bao hàm loại trừ kết hợp Chia kẹo Euler
         </h3>
         
     </div>
@@ -415,7 +417,7 @@ summary {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Nov 10, 2022</time>
+                <time class="article-time--published">Jan 18, 2023</time>
             </div>
         
 
@@ -430,7 +432,7 @@ summary {
 
 
                 <time class="article-time--reading">
-                    9 phút đọc
+                    7 phút đọc
                 </time>
             </div>
         
@@ -445,55 +447,81 @@ summary {
     <section class="article-content">
     
     
-    <h2 id="nguồn-tham-khảo">Nguồn tham khảo</h2>
+    <h2 id="cần-biết-trước">Cần biết trước</h2>
 <ul>
-<li>Codeforces - <a class="link" href="https://codeforces.com/blog/entry/45578"  target="_blank" rel="noopener"
-    >Parallel Binary Search [tutorial]</a></li>
-<li>Robert1003 - <a class="link" href="https://robert1003.github.io/2020/02/05/parallel-binary-search.html#example-problems"  target="_blank" rel="noopener"
-    >A Simple Introduction to Parallel Binary Search</a></li>
+<li>Nguyên lí bao hàm loại trừ</li>
+<li>Bài toán Chia kẹo Euler</li>
 </ul>
-<h2 id="cần-biết-trước">Cần biết trước</h2>
-<p>Tìm kiếm nhị phân (tất nhiên vì bạn cần phải hiểu cách tìm kiếm nhị phân hoạt động).</p>
-<h2 id="mở-đầu">Mở đầu</h2>
-<p>Trong một số bài toán. Ta cần sử dụng kĩ thuật tìm kiếm nhị phân cho rất nhiều truy vấn. Trong đó có một số thao tác trong lúc chặt nhị phân được lặp lại nhiều lần. Để tối ưu hóa việc này, ta thực hiện chặt nhị phân song song - tức chặt nhị phân cùng một lúc nhiều truy vấn.</p>
-<h2 id="bài-toán">Bài toán</h2>
-<p>Ta xét bài toán sau đây: <a class="link" href="https://www.spoj.com/problems/METEORS/"  target="_blank" rel="noopener"
-    >Meteors</a>.</p>
-<h3 id="đề-bài">Đề bài</h3>
-<p>Bài toán có thể được phát biểu đơn giản như sau:</p>
-<p>Cho $N$ người và $M$ cái túi. Túi thứ $i$ được sở hữu bởi người thứ $o_i$, và mỗi người cần ít nhất $g_i$ quả táo trong các túi mà mình sở hữu. Các cái túi được xếp theo thứ tự thành vòng tròn.</p>
-<p>Sau đó, có $K$ sự kiện lần lượt xảy ra, mỗi sự kiện có dạng $l_i, r_i, x_i$: các túi được đánh số từ $l_i$ đến $r_i$ được tăng thêm $x_i$ quả táo ($l_i$ có thể lớn hơn $r_i$ do các túi được xếp thành vòng tròn).</p>
-<p>Với mỗi người, cho biết sau ít nhất bao nhiêu sự kiện thì người đó đạt đủ số lượng quả táo mà mình muốn.</p>
-<h4 id="giới-hạn">Giới hạn</h4>
+<h2 id="đề-bài">Đề bài</h2>
+<h3 id="tham-khảo">Tham khảo</h3>
 <ul>
-<li>$1 \leq N, M, K \leq 3 \cdot 10^5$</li>
-<li>$1 \leq o_i, l_i, r_i \leq N$</li>
-<li>$1 \leq g_i, x_i \leq 10^9$</li>
+<li><a class="link" href="https://www.hackerrank.com/contests/101hack43/challenges/k-inversion-permutations/problem"  target="_blank" rel="noopener"
+    >HackerRank - K-Inversion Permutations</a></li>
+<li><a class="link" href="https://codeforces.com/blog/entry/64625"  target="_blank" rel="noopener"
+    >Codeforces - [Tutorial] Inclusion-Exclusion Principle</a></li>
 </ul>
-<h3 id="phân-tích">Phân tích</h3>
-<p>Cách tiếp cận dễ nhận ra đó là với mỗi người, ta tiến hành tìm kiếm nhị phân số lượng sự kiện, sau đó cập nhật từng sự kiện lên cây phân đoạn hoặc cây Fenwick. Tuy nhiên, tổng độ phức tạp thời gian cho cách này sẽ lên tới $\mathcal{O}(N \cdot \log K \cdot K \cdot \log M)$ và tất nhiên sẽ bị TLE.</p>
-<p>Từ đây ta nhận ra việc tìm kiếm nhị phân lần lượt cho $N$ là không khả thi. Vậy nên ta sẽ tìm cách áp dụng kĩ thuật chặt nhị phân song song.</p>
-<h3 id="lời-giải">Lời giải</h3>
-<p>Từ phân tích trên, ta nhận thấy việc cập nhật các sự kiện từ đầu đến một vị trí nào đó trong các lần chặt nhị phân đã bị lặp lại nhiều lần. Ví dụ như, trong lượt chặt nhị phân đầu tiên của mỗi người, ta đều cần cập nhật lại các sự kiện từ $1$ đến $\frac{K+1}{2}$.</p>
-<p>Từ đây ta sẽ tiếp cận việc tìm kiếm nhị phân theo một hướng khác: thay vì chặt nhị phân $N$ lần cho từng người, thì ta chỉ chặt nhị phân $1$ lần sao cho trong mỗi lượt, ta tiến hành &ldquo;chia nhóm&rdquo; $N$ người theo kết quả.</p>
-<p>Cụ thể, trong lượt đầu tiên, mọi người đều chung một nhóm $[1, K]$. Sang lượt thứ hai, sẽ có một số người nằm ở nhóm $[1, \frac{K}{2}]$ và số còn lại ở nhóm $(\frac{K}{2}, K]$ tùy theo điều kiện thỏa mãn hay không. Đến lượt thứ ba, ta có $4$ nhóm: $[1, \frac{K}{4}]$, $(\frac{K}{4}, \frac{2K}{4}]$, $(\frac{2K}{4}, \frac{3K}{4}]$, và $(\frac{3K}{4}, K]$. Như vậy, sau khoảng $\mathcal{O}(\log K)$ lượt, mọi người đều được chia vào một <strong>điểm</strong>, điểm này sẽ chính là đáp án cho người đó. Đồng thời, ở mỗi lượt, ta chỉ cần thực hiện cập nhật lần lượt $K$ sự kiện là có thể tính được cho $N$ người và chia nhóm cho $N$ người đó.</p>
-<p>Độ phức tạp: Do mỗi thao tác cập nhật $K$ sự kiện mất $\mathcal{O}(\log M)$, nên độ phức tạp của thuật toán này là $\mathcal{O}(\log Q \cdot Q \cdot \log M)$, vừa đủ với giới hạn đề bài.</p>
-<h3 id="cài-đặt">Cài đặt</h3>
-<p>Ta cần chuẩn bị:</p>
+<h3 id="tóm-tắt">Tóm tắt</h3>
+<p>Cho hai số nguyên $n, k$. Đếm số lượng hoán vị của dãy ${1, 2, \dots, n}$ có $k$ cặp nghịch thế.</p>
 <ul>
-<li>Một cấu trúc dữ liệu cho phép cập nhật đoạn và truy vấn một phần tử (có thể dùng cây Fenwick hoặc cây phân đoạn)</li>
-<li>Một mảng <code>check_list</code> với <code>check_list[x]</code> lưu danh sách những người đang chặt nhị phân tại vị trí $\text{mid} = x$</li>
-<li>Các mảng $L[i], R[i], \text{best}[i]$ dùng để lưu trạng thái chặt nhị phân của người thứ $i$.</li>
+<li>Subtask 1: $1 \leq n \leq 3000, 0 \leq k \leq \min(C^2_n, 3000)$</li>
+<li>Subtask 2: $1 \leq n \leq 10^5, 0 \leq k \leq \min(C^2_n, 10^5)$</li>
 </ul>
-<p>Mỗi lượt trong $\log K$ lượt chặt nhị phân, ta thực hiện như sau:</p>
-<ul>
-<li>Khởi tạo lại cây Fenwick/phân đoạn.</li>
-<li>Khởi tạo lại mảng <code>check_list</code></li>
-<li>Xác định vị trí chặt nhị phân $\text{mid}[i] = \frac{L[i]+ R[i]}{2}$ cho từng người và thêm vào <code>check_list[mid[i]]</code></li>
-<li>Duyệt lần lượt các sự kiện và cập nhật lên cây Fenwick/phân đoạn. Khi duyệt đến vị trí $x$ thì duyệt từng người trong <code>check_list[x]</code>, tính tổng và cập nhật $L[i], R[i], \text{best}[i]$ cho người đó. Như vậy trong mỗi lượt ta cập nhật cho cây Fenwick đúng $K$ lần, và gọi truy vấn phần tử trên cây cho đúng $M$ cái túi.</li>
-</ul>
+<h2 id="phân-tích">Phân tích</h2>
+<h3 id="subtask-1-quy-hoạch-động">Subtask 1: Quy hoạch động</h3>
+<p>Độ phức tạp: $\mathcal{O}(nk)$</p>
+<p>Trước khi đến với lời giải chính của bài này. Ta xét một hướng tiếp cận quy hoạch động khi $n$ và $k$ nhỏ. Gọi $\text{dp}[i][j]$ là số lượng hoán vị của dãy ${1, 2, \dots, i}$ có $j$ nghịch thế, ta dễ có công thức sau:
+$$
+\text{dp}[i][j] = \sum_{x = 0}^{i-1} \text{dp}[i-1][j-x]
+$$</p>
 <details>
-<summary> Code AC của mình </summary>
+<summary>Giải thích công thức</summary>
+<p>Ở một trạng thái $(i, j)$ của hàm quy hoạch động, ta có thể đặt phần tử $i$ vào một trong $i$ vị trí của hoán vị ${1, 2, \dots, i-1}$ đã dựng trước đó. Số nghịch thế thay đổi như sau:</p>
+<ul>
+<li>Đặt vào vị trí cuối dãy, số nghịch thế không thay đổi.</li>
+<li>Đặt vào trước phần tử cuối, số nghịch thế tăng lên $1$ do phần tử $i$ lớn hơn các phần tử đã điền và có 1 phần tử đứng sau $i$.</li>
+<li>&hellip;</li>
+<li>Đặt vào vị trí đầu dãy, số nghịch thế tăng lên $i-1$ do có $i-1$ phần tử nhỏ hơn $i$ và đứng sau $i$.</li>
+</ul>
+<p>Tóm lại, khi đặt phần tử $i$ vào một vị trí trong hoán vị đã dựng, số nghịch thế tăng lên sẽ bằng số phần tử đứng sau $i$, do $i$ lớn hơn tất cả phần tử đã điền.</p>
+</details>
+<p>Đáp án của bài toán sẽ là $\text{dp}[n][k]$. Ta sẽ được thuật toán có độ phức tạp là $\mathcal{O}(nk^2)$, từ đó ta có thể dùng mảng cộng dồn để cải tiến thành $\mathcal{O}(nk)$.</p>
+<h3 id="subtask-2-bao-hàm-loại-trừ">Subtask 2: Bao hàm loại trừ</h3>
+<p>Độ phức tạp: $\mathcal{O}(k\sqrt{k})$</p>
+<h4 id="nhận-xét">Nhận xét</h4>
+<p>Trong công thức quy hoạch động trên, ta nhận thấy khi thêm phần tử thứ $i$ vào hoán vị, số cặp nghịch thế lại tăng thêm. Ta gọi lượng tăng thêm đó là $x_i$. Khi đó, bài toán trở thành đếm số dãy số $(x_1, x_2, \dots, x_n)$ phân biệt thỏa mãn:
+$$
+x_1 + x_2 + \dots + x_n = k
+\text { và } 0 \leq x_i \leq i-1
+$$</p>
+<p>Xét phiên bản đơn giản hơn của bài toán: tìm số lượng nghiệm nhưng không có cận trên của $x_i$. Ta dễ dàng dùng công thức Chia kẹo Euler và tìm được đáp án của bài toán là $C_{n-1+k}^{n-1}$. Như vậy, ta cần phải tìm cách loại bỏ điều kiện $x_i \leq i-1$ để có thể dùng công thức trên.</p>
+<h4 id="lời-giải">Lời giải</h4>
+<p>Gọi $f(j)$ là số nghiệm của bài toán sao cho có <strong>ít nhất</strong> $j$ phần tử $x_i \geq i$ (phần tử xấu). Giả sử, ta xác định được $j$ phần tử xấu $x_{i_1} \geq i_1, x_{i_2} \geq i_2, \dots, x_{i_j} \geq i_j$ và $s = i_1 + i_2 + \dots + i_j$. Khi đó, ta gọi dãy $y$ sao cho $y_i = x_i - i$ nếu $x_i$ là phần tử xấu, ngược lại ta cho $y_i = x_i$. Như vậy bài toán trở thành đếm số dãy $y$ thỏa mãn:
+$$
+y_1 + y_2 + \dots + y_n = k - s \text { và }
+y_i \geq 0
+$$
+Áp dụng Chia kẹo Euler, số lượng dãy thỏa mãn trong trường hợp này là $C^{n-1}_{n-1+(k-s)}$</p>
+<p>Như vậy ta có cách tính $f(j)$ như sau: Gọi $g(s, j)$ là số cách chọn $j$ số nguyên <strong>phân biệt</strong> thuộc $[1, n]$ sao cho tổng của chúng là $s$. Khi đó:
+$$f(j) = \sum_{s = 0}^{k} g(s, j)\times C^{n-1}_{n-1+k-s}$$</p>
+<p>Ta nhận thấy do $j$ số nguyên <strong>phân biệt</strong> nên $j \leq \sqrt{k}$, vì vậy ta có thể tính $g(s, j)$ bằng quy hoạch động trong $O(k\sqrt{k})$ theo công thức:
+$$
+g(s, j) = g(s-j, j) + g(s-j, j-1) - g(s-(n+1), j-1)
+$$</p>
+<details>
+<summary>Giải thích công thức</summary>
+<p>Tại trạng thái $(s, j)$ - $j$ phần tử có tổng là $s$, ta có hai trường hợp chuyển trạng thái:</p>
+<ul>
+<li>$g(s-j, j)$: Tăng tất cả phần tử, mỗi phần tử thêm $1$ đơn vị.</li>
+<li>$g(s-j, j-1) - g(s-(n+1), j-1)$: Tăng tất cả phần tử trước đó, mỗi phần tử thêm $1$ đơn vị, và tạo thêm một phần tử mới có giá trị là $1$. Sau đó, ta phải loại đi các trường hợp dãy có phần tử lớn hơn $n$.</li>
+</ul>
+</details>
+<p>Cuối cùng, áp dụng nguyên lí bao hàm loại trừ, ta có công thức cho đáp án như sau:
+$$
+\text{answer} = \sum_{j = 0}^{\sqrt{k}} (-1)^j f(j)
+$$</p>
+<h4 id="code-tham-khảo">Code tham khảo</h4>
+<details>
+<summary>Hãy xem code khi thực sự cần thiết</summary>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">  1
@@ -629,27 +657,9 @@ summary {
 </span><span class="lnt">131
 </span><span class="lnt">132
 </span><span class="lnt">133
-</span><span class="lnt">134
-</span><span class="lnt">135
-</span><span class="lnt">136
-</span><span class="lnt">137
-</span><span class="lnt">138
-</span><span class="lnt">139
-</span><span class="lnt">140
-</span><span class="lnt">141
-</span><span class="lnt">142
-</span><span class="lnt">143
-</span><span class="lnt">144
-</span><span class="lnt">145
-</span><span class="lnt">146
-</span><span class="lnt">147
-</span><span class="lnt">148
-</span><span class="lnt">149
-</span><span class="lnt">150
-</span><span class="lnt">151
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// Created by BJMinhNhut
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Created by BJMinhNhut
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#define mp make_pair
@@ -687,142 +697,104 @@ summary {
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="cm">/***End of Template***/</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mf">3e5</span><span class="o">+</span><span class="mi">5</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">owner</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>	
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">goal</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Query</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">val</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">queries</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">BinarySearch</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">best</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="n">BinarySearch</span><span class="p">(</span><span class="kt">int</span> <span class="n">_l</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">_r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="n">l</span><span class="p">(</span><span class="n">_l</span><span class="p">),</span> <span class="n">r</span><span class="p">(</span><span class="n">_r</span><span class="p">),</span> <span class="n">best</span><span class="p">(</span><span class="n">_r</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="nf">getMid</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="kt">bool</span> <span class="nf">finished</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">l</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">;}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">bool</span> <span class="n">go_left</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">go_left</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="n">best</span> <span class="o">=</span> <span class="n">getMid</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">			<span class="n">r</span> <span class="o">=</span> <span class="n">getMid</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span> <span class="k">else</span> <span class="n">l</span> <span class="o">=</span> <span class="n">getMid</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">state</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Fenwick</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="n">ll</span> <span class="n">nodes</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">memset</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">nodes</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="k">for</span><span class="p">(;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">k</span> <span class="o">+=</span> <span class="n">k</span><span class="o">&amp;-</span><span class="n">k</span><span class="p">)</span> <span class="n">nodes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">val</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="kt">void</span> <span class="nf">rangeUpdate</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">update</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">		<span class="n">update</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="n">ll</span> <span class="nf">getSum</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">ll</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">		<span class="k">for</span><span class="p">(;</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">-=</span> <span class="n">k</span><span class="o">&amp;-</span><span class="n">k</span><span class="p">)</span> <span class="n">ans</span> <span class="o">+=</span> <span class="n">nodes</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">FT</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">vi</span> <span class="n">check_list</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl"><span class="n">vi</span> <span class="n">sectors</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Input</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">m</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">owner</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sectors</span><span class="p">[</span><span class="n">owner</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">pb</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">goal</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">k</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">l</span> <span class="o">&gt;&gt;</span> <span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="n">queries</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">val</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">read</span><span class="p">(</span><span class="n">T</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">char</span> <span class="n">c</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">()))</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span><span class="o">-</span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">()));</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="n">FT</span><span class="p">.</span><span class="n">rangeUpdate</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">FT</span><span class="p">.</span><span class="n">rangeUpdate</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">		<span class="n">FT</span><span class="p">.</span><span class="n">rangeUpdate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">write</span><span class="p">(</span><span class="n">T</span> <span class="n">a</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">)</span> <span class="n">write</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">putchar</span><span class="p">(</span><span class="n">a</span><span class="o">%</span><span class="mi">10</span> <span class="o">+</span> <span class="sc">&#39;0&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/***End of Template***/</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mf">1e5</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="n">SQRT</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">MOD</span> <span class="o">=</span> <span class="mf">1e9</span><span class="o">+</span><span class="mi">7</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">fact</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">],</span> <span class="n">inv</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">dp</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">SQRT</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Input</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">modPow</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">1ll</span><span class="o">*</span><span class="n">res</span><span class="o">*</span><span class="n">a</span> <span class="o">%</span> <span class="n">MOD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">a</span> <span class="o">=</span> <span class="mi">1ll</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">%</span><span class="n">MOD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">b</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">a</span> <span class="o">+=</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="n">MOD</span><span class="p">)</span> <span class="n">a</span><span class="o">-=</span> <span class="n">MOD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">sub</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">a</span> <span class="o">-=</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">a</span> <span class="o">+=</span> <span class="n">MOD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ll</span> <span class="nf">minSum</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">1ll</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">prepare</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">fact</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1ll</span><span class="o">*</span><span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">i</span> <span class="o">%</span> <span class="n">MOD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">inv</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">modPow</span><span class="p">(</span><span class="n">fact</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">MOD</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FORD</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">inv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1ll</span><span class="o">*</span><span class="n">inv</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">MOD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">memset</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">dp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">sqrt_k</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">minSum</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">dp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">s</span><span class="o">-</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">s</span><span class="o">-</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">%</span> <span class="n">MOD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">-</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">sub</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">s</span><span class="o">-</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">nCr</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">1ll</span><span class="o">*</span><span class="n">fact</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">inv</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">%</span> <span class="n">MOD</span> <span class="o">*</span> <span class="n">inv</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">r</span><span class="p">]</span> <span class="o">%</span> <span class="n">MOD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">calc</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">minSum</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">add</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="mi">1ll</span><span class="o">*</span><span class="n">nCr</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="n">k</span><span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dp</span><span class="p">[</span><span class="n">s</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">%</span> <span class="n">MOD</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> 
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">ans</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">Solve</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">//init
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">BinarySearch</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span> <span class="c1">// binary search in the range [1, k] 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="kt">bool</span> <span class="n">changed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="p">(</span><span class="n">changed</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">changed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="c1">// check whether any state[i] changed
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">		<span class="c1">//init
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="n">FT</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">		<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">finished</span><span class="p">())</span> 
-</span></span><span class="line"><span class="cl">			<span class="n">check_list</span><span class="p">[</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getMid</span><span class="p">()].</span><span class="n">pb</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">		<span class="n">FOR</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//sweep through k queries
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="n">update</span><span class="p">(</span><span class="n">queries</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">l</span><span class="p">,</span> <span class="n">queries</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">r</span><span class="p">,</span> <span class="n">queries</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">val</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">			<span class="k">while</span> <span class="p">(</span><span class="n">check_list</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">size</span><span class="p">())</span> <span class="p">{</span> <span class="c1">//check every person who currently has mid = i in binary search
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="n">changed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">				<span class="kt">int</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">check_list</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">back</span><span class="p">();</span> <span class="n">check_list</span><span class="p">[</span><span class="n">mid</span><span class="p">].</span><span class="n">pop_back</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">				<span class="n">ll</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">				<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="nl">x</span> <span class="p">:</span> <span class="n">sectors</span><span class="p">[</span><span class="n">cur</span><span class="p">])</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">					<span class="n">sum</span> <span class="o">+=</span> <span class="n">FT</span><span class="p">.</span><span class="n">getSum</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">					<span class="k">if</span> <span class="p">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">goal</span><span class="p">[</span><span class="n">cur</span><span class="p">])</span> <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">				<span class="p">}</span>
-</span></span><span class="line"><span class="cl">				<span class="n">state</span><span class="p">[</span><span class="n">cur</span><span class="p">].</span><span class="n">update</span><span class="p">(</span><span class="n">sum</span> <span class="o">&gt;=</span> <span class="n">goal</span><span class="p">[</span><span class="n">cur</span><span class="p">]);</span> <span class="c1">// go left when meet the goal
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">prepare</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">minSum</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">j</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span> <span class="n">sub</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">calc</span><span class="p">(</span><span class="n">j</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="n">add</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">calc</span><span class="p">(</span><span class="n">j</span><span class="p">));</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="n">FOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> 
-</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">best</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">best</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span> <span class="c1">//print binary search result
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">else</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;NIE</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>	
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">fopen</span><span class="p">(</span><span class="s">&#34;inputf.in&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="n">freopen</span><span class="p">(</span><span class="s">&#34;inputf.in&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">		<span class="n">freopen</span><span class="p">(</span><span class="s">&#34;outputf.in&#34;</span><span class="p">,</span> <span class="s">&#34;w&#34;</span><span class="p">,</span> <span class="n">stdout</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="p">(</span><span class="n">fopen</span><span class="p">(</span><span class="s">&#34;inputf.in&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">))</span> <span class="n">freopen</span><span class="p">(</span><span class="s">&#34;inputf.in&#34;</span><span class="p">,</span> <span class="s">&#34;r&#34;</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">	<span class="n">Input</span><span class="p">(),</span> <span class="n">Solve</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div></details>
-<h2 id="tổng-kết">Tổng kết</h2>
-<blockquote>
-<p>&ldquo;A cool way to visualize this is to think of a binary search tree. Suppose we are doing standard binary search, and we reject the right interval — this can be thought of as moving left in the tree. Similarly, if we reject the left interval, we are moving right in the tree.</p>
-<p>So what Parallel Binary Search does is move one step down in N binary search trees simultaneously in one &ldquo;sweep&rdquo;, taking $\mathcal{O}(NX)$ time, where X is dependent on the problem and the data structures used in it. Since the height of each tree is $\log N$, the complexity is $\mathcal{O}(NX\log{N})$.&rdquo; — animeshf</p>
-</blockquote>
-<p>Mình xin phép dịch lại như sau: Một cách đơn giản, chặt nhị phân song song tức là ta vẽ ra một <em>cây tìm kiếm nhị phân</em>. Cứ mỗi lượt ta duyệt một tầng, và đẩy các phần tử trong mỗi nút thuộc tầng này sang hai nút trái hoặc phải ở tầng dưới. Việc này được thực hiện chỉ trong $\mathcal{O}(NX)$ với $X$ tùy thuộc vào từng bài toán và cấu trúc dữ liệu mà ta sử dụng. Từ đó dẫn đến tổng độ phức tạp thuật toán là $\mathcal{O}(NX\log{N})$.</p>
-<p>Ngoài ra, cách xử lí truy vấn ở bài toán trên chỉ là một trường hợp cụ thể, trong các trường hợp khác, về tổng quát, ta cần tư duy rằng ở mỗi tầng, ta có danh sách các truy vấn mới được tạo ra từ việc tìm $\text{mid}[i]$ và ta cần đi giải quyết nhanh các truy vấn này.</p>
-<h2 id="một-số-bài-tập-khác">Một số bài tập khác</h2>
-<ul>
-<li>ICPC 2022 miền Trung - <a class="link" href="https://oj.vnoi.info/problem/icpc22_mt_d"  target="_blank" rel="noopener"
-    >D: Median</a></li>
-<li>Codeforces - <a class="link" href="https://codeforces.com/contest/786/problem/C"  target="_blank" rel="noopener"
-    >786C: Till I Collapse</a></li>
-<li>SPOJ - <a class="link" href="https://www.spoj.com/problems/METEORS/"  target="_blank" rel="noopener"
-    >Meteors</a></li>
-<li>HackerEarth - <a class="link" href="https://www.hackerearth.com/challenges/competitive/may-circuits/algorithm/make-n00b_land-great-again-circuits/"  target="_blank" rel="noopener"
-    >Make n00b_land Great Again!</a></li>
-<li>Topcoder - <a class="link" href="https://community.topcoder.com/stat?c=problem_statement&amp;pm=14088"  target="_blank" rel="noopener"
-    >SRM 675 Div1 500</a></li>
-</ul>
 
 </section>
 
@@ -835,7 +807,9 @@ summary {
         
             <a href="/tags/algorithm/">algorithm</a>
         
-            <a href="/tags/offline-techniques/">offline-techniques</a>
+            <a href="/tags/inclusion-exclusion/">inclusion-exclusion</a>
+        
+            <a href="/tags/combinatorics/">combinatorics</a>
         
     </section>
 
@@ -880,12 +854,12 @@ summary {
             
                 
 <article class="">
-    <a href="/p/k-inversion-permutation/">
+    <a href="/p/parallel-binary-search/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Hoán vị K-nghịch thế</h2>
+            <h2 class="article-title">Chặt nhị phân song song</h2>
         </div>
     </a>
 </article>

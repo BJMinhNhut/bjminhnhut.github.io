@@ -6,7 +6,39 @@
         <description>Recent content in Tags on BJMinhNhut Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>vi</language>
-        <lastBuildDate>Mon, 16 Jan 2023 00:16:17 +0700</lastBuildDate><atom:link href="https://bjminhnhut.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 18 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://bjminhnhut.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>algorithm</title>
+        <link>https://bjminhnhut.github.io/tags/algorithm/</link>
+        <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/tags/algorithm/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>combinatorics</title>
+        <link>https://bjminhnhut.github.io/tags/combinatorics/</link>
+        <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/tags/combinatorics/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>cp</title>
+        <link>https://bjminhnhut.github.io/tags/cp/</link>
+        <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/tags/cp/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>inclusion-exclusion</title>
+        <link>https://bjminhnhut.github.io/tags/inclusion-exclusion/</link>
+        <pubDate>Wed, 18 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://bjminhnhut.github.io/tags/inclusion-exclusion/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>cla</title>
         <link>https://bjminhnhut.github.io/tags/cla/</link>
         <pubDate>Mon, 16 Jan 2023 00:16:17 +0700</pubDate>
@@ -28,22 +60,6 @@
         <pubDate>Mon, 16 Jan 2023 00:16:17 +0700</pubDate>
         
         <guid>https://bjminhnhut.github.io/tags/life/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>algorithm</title>
-        <link>https://bjminhnhut.github.io/tags/algorithm/</link>
-        <pubDate>Thu, 10 Nov 2022 22:30:50 +0700</pubDate>
-        
-        <guid>https://bjminhnhut.github.io/tags/algorithm/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>cp</title>
-        <link>https://bjminhnhut.github.io/tags/cp/</link>
-        <pubDate>Thu, 10 Nov 2022 22:30:50 +0700</pubDate>
-        
-        <guid>https://bjminhnhut.github.io/tags/cp/</guid>
         <description></description>
         </item>
         <item>
